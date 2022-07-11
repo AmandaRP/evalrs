@@ -1,6 +1,5 @@
 Package: evalrs
 Version: 0.1.10
-License: MIT + file LICENSE
 Description: Metrics for evaluation of recommender systems models. Includes both accuracy and beyond-accuracy metrics.
 Title: Evaluation Metrics for Recommender Systems
 Authors@R:
@@ -10,4 +9,4 @@ Encoding: UTF-8
 Imports: dplyr, parallel, parallelDist, stats, utils
 Suggests: testthat
 RoxygenNote: 7.1.2
-
+License: MIT + file LICENSE
