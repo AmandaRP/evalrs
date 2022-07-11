@@ -19,7 +19,7 @@ You can install {evalrs} from this repo with:
 
 ``` r
 install.packages("devtools")
-devtools::install_github("evalrs")
+devtools::install_github("AmandaRP/evalrs")
 library(evalrs)
 ```
 
