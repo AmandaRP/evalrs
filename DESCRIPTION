@@ -6,7 +6,6 @@ Title: Evaluation Metrics for Recommender Systems
 Authors@R:
     c(person("Amanda", "Peterson", email = "amanda@dekleineorchards.com", role = c("aut", "cre")))
 Maintainer: Amanda Peterson <amanda@dekleineorchards.com>
-Description: An R package for evaluation of recommendation systems
 Encoding: UTF-8
 Imports: dplyr, parallel, parallelDist, stats, utils
 Suggests: testthat
