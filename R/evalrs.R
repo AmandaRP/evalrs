@@ -9,10 +9,6 @@
 #' mean_recip_rank,
 #' mpr_score,
 #' ndcg,
-#' diversity,
-#' diversity_sampled,
-#' kendall.dist,
-#' spearman.dist,
 #' novelty
 #'
 #' @section Author:
