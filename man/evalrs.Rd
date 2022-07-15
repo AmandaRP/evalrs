@@ -15,6 +15,8 @@ mean_avg_precision,
 mean_recip_rank,
 mpr_score,
 ndcg,
+diversity,
+diversity_sampled,
 novelty
 }
 
