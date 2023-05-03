@@ -10,3 +10,4 @@ Imports: dplyr, parallel, parallelDist, stats, utils
 Suggests: testthat
 RoxygenNote: 7.2.3
 License: MIT + file LICENSE
+URL: https://amandarp.github.io/evalrs/
