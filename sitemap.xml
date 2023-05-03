@@ -16,12 +16,6 @@
     <loc>https://amandarp.github.io/evalrs/index.html</loc>
   </url>
   <url>
-    <loc>https://amandarp.github.io/evalrs/reference/compute_hr.html</loc>
-  </url>
-  <url>
-    <loc>https://amandarp.github.io/evalrs/reference/compute_ndcg.html</loc>
-  </url>
-  <url>
     <loc>https://amandarp.github.io/evalrs/reference/diversity.html</loc>
   </url>
   <url>
@@ -55,6 +49,6 @@
     <loc>https://amandarp.github.io/evalrs/reference/pctl_rank.html</loc>
   </url>
   <url>
-    <loc>https://amandarp.github.io/evalrs/reference/spearman.dist.html</loc>
+    <loc>https://amandarp.github.io/evalrs/reference/spearman_dist.html</loc>
   </url>
 </urlset>
