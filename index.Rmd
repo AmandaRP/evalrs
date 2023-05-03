@@ -2,8 +2,7 @@
 output: github_document
 ---
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
-<!-- Update index.Rmd to update package website. -->
+<!-- index.md is generated from index.Rmd. Please edit that file -->
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
@@ -16,7 +15,7 @@ knitr::opts_chunk$set(
 
 
 
-# evalrs <img src='man/figures/evalrs.png' align="right" height="200" />
+# evalrs 
 
 
 Use the {evalrs} package to compute evaluation metrics for recommender systems. 

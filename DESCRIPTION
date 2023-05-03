@@ -8,5 +8,5 @@ Maintainer: Amanda Peterson <amanda@dekleineorchards.com>
 Encoding: UTF-8
 Imports: dplyr, parallel, parallelDist, stats, utils
 Suggests: testthat
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.3
 License: MIT + file LICENSE
