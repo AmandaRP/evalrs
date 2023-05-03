@@ -28,14 +28,14 @@
 #' @examples
 #' # Randomly rank k random letters.  Pretend that these k elements are the k
 #' # of highest rank in some larger ranking.  Do it again.  Compare the two
-#' # top-k lists via spearman.dist.
+#' # top-k lists via spearman_dist.
 #' set.seed(1L)
 #' k <- 10L
 #' u <- LETTERS
 #' x <- stats::setNames(sample(k), sample(u, k))
 #' y <- stats::setNames(sample(k), sample(u, k))
-#' spearman.dist(x, y)
-spearman.dist <- function (x, y, L = 1L + length(x), normalize = TRUE)
+#' spearman_dist(x, y)
+spearman_dist <- function (x, y, L = 1L + length(x), normalize = TRUE)
 {
 	k <- length(x)
 	if (!identical(length(y), k)) {
