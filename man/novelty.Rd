@@ -6,9 +6,9 @@
 \usage{
 novelty(
   x,
-  nrec,
-  agg.fun = mean,
-  no.aggregate = FALSE,
+  k,
+  agg_fun = mean,
+  no_aggregate = FALSE,
   pred_col = "pred",
   user_col = "user",
   item_col = "item"
@@ -19,24 +19,24 @@ novelty(
 by \code{pred_col}), a column of users (identified by \code{user_col})
 and a column of items (identified by \code{item_col})}
 
-\item{nrec}{numeric scalar that specifies the length of recommendation list}
+\item{k}{integer that specifies the length of recommendation list}
 
-\item{agg.fun}{function that aggregates the item non-recommendation
-probabilities as well as (unless \code{no.aggregate} is \code{TRUE})
+\item{agg_fun}{function that aggregates the item non-recommendation
+probabilities as well as (unless \code{no_aggregate} is \code{TRUE})
 the recommendation-list novelty values}
 
-\item{no.aggregate}{logical scalar that specifies to return the
+\item{no_aggregate}{logical scalar that specifies to return the
 recommendation-list novelty values instead of the result of applying
-\code{agg.fun} thereto}
+\code{agg_fun} thereto}
 
-\item{pred_col}{scalar that identifies \code{x}'s column of predictions}
+\item{pred_col}{string that identifies \code{x}'s column of predictions}
 
-\item{user_col}{scalar that identifies \code{x}'s column of users}
+\item{user_col}{string that identifies \code{x}'s column of users}
 
-\item{item_col}{scalar that identifies \code{x}'s column of items}
+\item{item_col}{string that identifies \code{x}'s column of items}
 }
 \value{
-numeric scalar if \code{no.aggregate} is FALSE, otherwise
+numeric if \code{no_aggregate} is FALSE, otherwise
 as many novelty values as there are unique users for whom there are
 recommendations
 }
@@ -46,7 +46,7 @@ here is defined as aggregate recommendation-list novelty, which in turn is
 defined here for a given recommendation list as the aggregate proportion
 of all users to whom the list's items are not recommended; the aggregation
 function applied in both cases is specified by the user via the parameter
-named `agg.fun'.  In other words, if \eqn{S} is the aforementioned
+named `agg_fun'.  In other words, if \eqn{S} is the aforementioned
 aggregation function then the recommendation-list novelty \eqn{s} of a
 list \eqn{R} of \eqn{k} recommended items is computed as \eqn{s = S(1 -
 p_1, 1 - p_2, \ldots, 1 - p_k),} where \eqn{p_i} for \eqn{i} in \eqn{1,
@@ -71,7 +71,7 @@ x$pred <- unlist(replicate(nuser, { # predictions vector
     y <- runif(nitem)               # random values in [0,1]...
     y / sum(y)                      # ...that sum to one
 }, simplify = FALSE))
-novelty(x, nrec = k)
+novelty(x, k = k)
 
 # More complex example: Plot grouped, un-aggregated novelty values
 # on a single chart.
@@ -88,7 +88,7 @@ data <- replicate(ngroup, {
         y <- runif(nitem)               # random values in [0,1]...
         y / sum(y)                      # ...that sum to one
     }, simplify = FALSE))
-    novelty(x, nrec = k, no.aggregate = TRUE)
+    novelty(x, k = k, no_aggregate = TRUE)
 }, simplify = FALSE)
 names(data) <- LETTERS[seq_along(data)] # group names
 plot.new()

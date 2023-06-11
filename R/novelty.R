@@ -5,7 +5,7 @@
 #' defined here for a given recommendation list as the aggregate proportion
 #' of all users to whom the list's items are not recommended; the aggregation
 #' function applied in both cases is specified by the user via the parameter
-#' named `agg.fun'.  In other words, if \eqn{S} is the aforementioned
+#' named `agg_fun'.  In other words, if \eqn{S} is the aforementioned
 #' aggregation function then the recommendation-list novelty \eqn{s} of a
 #' list \eqn{R} of \eqn{k} recommended items is computed as \eqn{s = S(1 -
 #' p_1, 1 - p_2, \ldots, 1 - p_k),} where \eqn{p_i} for \eqn{i} in \eqn{1,
@@ -19,18 +19,18 @@
 #' @param x data.frame that comprises a column of predictions (identified
 #' by \code{pred_col}), a column of users (identified by \code{user_col})
 #' and a column of items (identified by \code{item_col})
-#' @param nrec numeric scalar that specifies the length of recommendation list
-#' @param agg.fun function that aggregates the item non-recommendation
-#' probabilities as well as (unless \code{no.aggregate} is \code{TRUE})
+#' @param k integer that specifies the length of recommendation list
+#' @param agg_fun function that aggregates the item non-recommendation
+#' probabilities as well as (unless \code{no_aggregate} is \code{TRUE})
 #' the recommendation-list novelty values
-#' @param no.aggregate logical scalar that specifies to return the
+#' @param no_aggregate logical scalar that specifies to return the
 #' recommendation-list novelty values instead of the result of applying
-#' \code{agg.fun} thereto
-#' @param pred_col scalar that identifies \code{x}'s column of predictions
-#' @param user_col scalar that identifies \code{x}'s column of users
-#' @param item_col scalar that identifies \code{x}'s column of items
+#' \code{agg_fun} thereto
+#' @param pred_col string that identifies \code{x}'s column of predictions
+#' @param user_col string that identifies \code{x}'s column of users
+#' @param item_col string that identifies \code{x}'s column of items
 #'
-#' @return numeric scalar if \code{no.aggregate} is FALSE, otherwise
+#' @return numeric if \code{no_aggregate} is FALSE, otherwise
 #' as many novelty values as there are unique users for whom there are
 #' recommendations
 #'
@@ -50,7 +50,7 @@
 #'     y <- runif(nitem)               # random values in [0,1]...
 #'     y / sum(y)                      # ...that sum to one
 #' }, simplify = FALSE))
-#' novelty(x, nrec = k)
+#' novelty(x, k = k)
 #'
 #' # More complex example: Plot grouped, un-aggregated novelty values
 #' # on a single chart.
@@ -67,7 +67,7 @@
 #'         y <- runif(nitem)               # random values in [0,1]...
 #'         y / sum(y)                      # ...that sum to one
 #'     }, simplify = FALSE))
-#'     novelty(x, nrec = k, no.aggregate = TRUE)
+#'     novelty(x, k = k, no_aggregate = TRUE)
 #' }, simplify = FALSE)
 #' names(data) <- LETTERS[seq_along(data)] # group names
 #' plot.new()
@@ -77,7 +77,7 @@
 #' invisible(lapply(seq_along(data), function (i)
 #'     graphics::boxplot(data[[i]], at = i, add = TRUE)))
 #' axis(1L, at = seq_along(data), labels = names(data))
-novelty <- function (x, nrec, agg.fun = mean, no.aggregate = FALSE,
+novelty <- function (x, k, agg_fun = mean, no_aggregate = FALSE,
 	pred_col = "pred", user_col = "user", item_col = "item")
 {
 	if (!all(c(pred_col, user_col, item_col) %in% names(x))) {
@@ -86,15 +86,15 @@ novelty <- function (x, nrec, agg.fun = mean, no.aggregate = FALSE,
 	}
 	preds.u <- split(x[[pred_col]], x[[user_col]])
 	is.rec.u <- lapply(preds.u, function (p)
-		rank(-p, ties.method = "random") <= nrec)
+		rank(-p, ties.method = "random") <= k)
 	is.rec <- unsplit(is.rec.u, x[[user_col]])
 	x <- x[is.rec, , drop = TRUE]
 	item.probs <- table(x[[item_col]]) / length(unique(x[[user_col]]))
 	probs <- 1 - as.numeric(item.probs[as.character(x[[item_col]])])
 	probs.u <- split(probs, x[[user_col]])
-	nov <- vapply(probs.u, agg.fun, numeric(1L))
-	if (!no.aggregate) {
-		nov <- agg.fun(nov)
+	nov <- vapply(probs.u, agg_fun, numeric(1L))
+	if (!no_aggregate) {
+		nov <- agg_fun(nov)
 	}
 	nov
 }

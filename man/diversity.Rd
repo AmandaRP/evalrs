@@ -6,10 +6,10 @@
 \usage{
 diversity(
   x,
-  nrec,
-  method = c("jaccard", "kendall", "spearman"),
-  agg.fun = mean,
-  no.aggregate = FALSE,
+  k,
+  method = c("jaccard", "spearman"),
+  agg_fun = mean,
+  no_aggregate = FALSE,
   pred_col = "pred",
   user_col = "user",
   item_col = "item",
@@ -21,26 +21,26 @@ diversity(
 by \code{pred_col}), a column of users (identified by \code{user_col})
 and a column of items (identified by \code{item_col})}
 
-\item{nrec}{numeric scalar that specifies the length of recommendation list}
+\item{k}{numeric scalar that specifies the length of recommendation list}
 
 \item{method}{character scalar that specifies the measure of dissimilarity
 to employ}
 
-\item{agg.fun}{function that aggregates the pairwise dissimilarities}
+\item{agg_fun}{function that aggregates the pairwise dissimilarities}
 
-\item{no.aggregate}{logical scalar that specifies to return the
+\item{no_aggregate}{logical scalar that specifies to return the
 un-aggregated pairwise dissimilarities instead of a single aggregate value}
 
-\item{pred_col}{scalar that identifies \code{x}'s column of predictions}
+\item{pred_col}{string that identifies \code{x}'s column of predictions}
 
-\item{user_col}{scalar that identifies \code{x}'s column of users}
+\item{user_col}{string that identifies \code{x}'s column of users}
 
-\item{item_col}{scalar that identifies \code{x}'s column of items}
+\item{item_col}{string that identifies \code{x}'s column of items}
 
 \item{...}{arguments to pass to dissimilarity function}
 }
 \value{
-numeric scalar if \code{no.aggregate} is FALSE; otherwise numeric
+numeric scalar if \code{no_aggregate} is FALSE; otherwise numeric
 vector of length \eqn{n}-choose-two, where \eqn{n} is the number of unique
 values in \code{x[[user_col]]}.
 }
@@ -48,7 +48,7 @@ values in \code{x[[user_col]]}.
 Compute the diversity of a collection of recommendation lists.  `Diversity'
 here is defined as aggregate pairwise dissimilarity, where the aggregation
 function and the measure of dissimilarity are specified by the user via
-the parameters named `agg.fun' and `method'.
+the parameters named `agg_fun ' and `method'.
 }
 \examples{
 # Generate data.
@@ -62,16 +62,16 @@ x$pred <- unlist(replicate(nuser, { # predictions vector
     y <- runif(nitem)               # random values in [0,1]...
     y / sum(y)                      # ...that sum to one
 }, simplify = FALSE))
-nrec <- 5L                          # length of each recommendation list
+k <- 5L                          # length of each recommendation list
 # Compute diversity of data multiple ways for comparison.
-measures <- c("jaccard", "kendall", "spearman")
+measures <- c("jaccard", "spearman")
 names(measures) <- measures
 d <- lapply(measures, function (m)
-    diversity(x, nrec = nrec, method = m, no.aggregate = TRUE))
+    diversity(x, k = k, method = m, no_aggregate = TRUE))
 # Plot diversity values.
 boxplot(d, xlab = "measure", ylab = "diversity",
     main = "Diversity by measure of dissimilarity")
 }
 \seealso{
-\code{evalrs::kendall.dist}, \code{evalrs::spearman.dist}
+\code{evalrs:::spearman_dist}
 }

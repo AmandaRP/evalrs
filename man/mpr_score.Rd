@@ -10,12 +10,12 @@ mpr_score(x, pred_col = "pred", label_col = "label", user_col = "user")
 \item{x}{data-frame that has columns \code{pred_col}, \code{label_col}
 and \code{user_col}}
 
-\item{pred_col}{scalar that identifies column of \code{x} of predictions}
+\item{pred_col}{string that identifies column of \code{x} of predictions}
 
-\item{label_col}{scalar that identifies column of \code{x} of relevance-
+\item{label_col}{string that identifies column of \code{x} of relevance-
 values}
 
-\item{user_col}{scalar that identifies column of \code{x} of users}
+\item{user_col}{string that identifies column of \code{x} of users}
 }
 \value{
 numeric scalar in the interval \eqn{[0,100]}, where 0 is the best,

@@ -18,10 +18,10 @@ for the sample of users of the specified size}
 samples of size \code{min(maxuser, n)} are used, where \code{n} is the
 number of unique users found in \code{x}}
 
-\item{user_col}{scalar that identifies \code{x}'s column of users}
+\item{user_col}{string that identifies \code{x}'s column of users}
 
 \item{...}{arguments passed to \code{evalrs::diversity}, some of which (such
-as \code{nrec}) are required}
+as \code{k}) are required}
 }
 \value{
 mean of the diversity values calculated from subsets of the data
@@ -30,10 +30,8 @@ mean of the diversity values calculated from subsets of the data
 Calculating the diversity of a recommendation system by way of
 \code{evarls::diversity} can be onerous, as it entails \eqn{n\choose2}
 comparisons of recommendation lists, where \eqn{n} is the number of users
-for which the system has recommendations.  The burden is especially
-great for diversity calculations based on Kendall distance, which for
-two lists of length \eqn{k} nominally entails at least \eqn{k\choose2}
-comparisons of its own.  In light thereof, the present function serves
+for which the system has recommendations.
+The present function serves
 to reduce the computational burden by estimating the result from random
 samples of users of a specified size.
 }
@@ -49,10 +47,10 @@ x$pred <- unlist(replicate(nuser, { # predictions vector
     y <- runif(nitem)               # random values in [0,1]...
     y / sum(y)                      # ...that sum to one
 }, simplify = FALSE))
-nrec <- 5L                          # length of each recommendation list
+k <- 5L                          # length of each recommendation list
 # Estimate diversity from the default number of random samples of users of
 # the default size.
-diversity_sampled(x, nrec = nrec, method = "kendall")
+diversity_sampled(x, k = k, method = "spearman")
 }
 \seealso{
 \code{evalrs::diversity}

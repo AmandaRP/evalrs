@@ -4,18 +4,18 @@
 \alias{mean_recip_rank}
 \title{Compute the mean reciprocal rank.}
 \usage{
-mean_recip_rank(x, pred_col = "pred", label_col = "label", user_col = "user")
+mean_recip_rank(x, user_col = "user", label_col = "label", pred_col = "pred")
 }
 \arguments{
 \item{x}{data.frame that has columns \code{pred_col}, \code{label_col}
 and \code{user_col}}
 
-\item{pred_col}{column of \code{x} of predicted ratings}
+\item{user_col}{string identifying column of \code{x} of users}
 
-\item{label_col}{column of \code{x} of labels; non-zero values are assumed
+\item{label_col}{string identifying column of \code{x} of labels; non-zero values are assumed
 to indicate relevance}
 
-\item{user_col}{column of \code{x} of users}
+\item{pred_col}{string identifying column of \code{x} of predicted ratings}
 }
 \value{
 numeric scalar in the interval \eqn{[1/|I|,1]}

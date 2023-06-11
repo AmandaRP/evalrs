@@ -1,5 +1,5 @@
 #' Compute mean percentile-rank score.
-#' 
+#'
 #' The mean percentile-rank score is defined here as a weighted mean of
 #' percentile-ranks, which are calculated separately by user from the
 #' \emph{negative} of the given predictions and are weighted by their
@@ -9,10 +9,10 @@
 #'
 #' @param x data-frame that has columns \code{pred_col}, \code{label_col}
 #' and \code{user_col}
-#' @param pred_col scalar that identifies column of \code{x} of predictions
-#' @param label_col scalar that identifies column of \code{x} of relevance-
+#' @param pred_col string that identifies column of \code{x} of predictions
+#' @param label_col string that identifies column of \code{x} of relevance-
 #' values
-#' @param user_col scalar that identifies column of \code{x} of users
+#' @param user_col string that identifies column of \code{x} of users
 #'
 #' @return numeric scalar in the interval \eqn{[0,100]}, where 0 is the best,
 #' 100 is the worst and 50 is the expected value for predictions produced at

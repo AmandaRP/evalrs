@@ -14,14 +14,15 @@
 #'
 #' @param x data.frame that has columns \code{pred_col}, \code{label_col}
 #' and \code{user_col}
-#' @param pred_col column of \code{x} of predicted ratings
-#' @param label_col column of \code{x} of labels; non-zero values are assumed
+#' @param pred_col string identifying column of \code{x} of predicted ratings
+#' @param label_col string identifying column of \code{x} of labels; non-zero values are assumed
 #' to indicate relevance
-#' @param user_col column of \code{x} of users
+#' @param user_col string identifying column of \code{x} of users
 #'
 #' @return numeric scalar in the interval \eqn{[1/|I|,1]}
 #'
 #' @export
+#'
 #'
 #' @examples
 #' # Generate data.
@@ -40,8 +41,7 @@
 #' }, simplify = FALSE))
 #' # Compute score.
 #' mean_recip_rank(x)
-mean_recip_rank <- function (x, pred_col = "pred", label_col = "label",
-	user_col = "user")
+mean_recip_rank <- function (x, user_col = "user", label_col = "label", pred_col = "pred")
 {
 	s <- split(x, x[[user_col]])
 	rr <- unlist(parallel::mclapply(s, function (x) {
