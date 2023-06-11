@@ -2,7 +2,7 @@ pandoc: 2.19.2
 pkgdown: 2.0.7
 pkgdown_sha: ~
 articles: {}
-last_built: 2023-05-03T20:43Z
+last_built: 2023-06-11T22:33Z
 urls:
   reference: https://amandarp.github.io/evalrs/reference
   article: https://amandarp.github.io/evalrs/articles

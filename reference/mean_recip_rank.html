@@ -22,7 +22,7 @@ rank is \(1/|U|\sum_{u\in U}r_u.\)"><meta property="og:image" content="https://a
     
     <a class="navbar-brand me-2" href="../index.html">evalrs</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.10</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.11</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -60,7 +60,7 @@ rank is \(1/|U|\sum_{u\in U}r_u.\)</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">mean_recip_rank</span><span class="op">(</span><span class="va">x</span>, pred_col <span class="op">=</span> <span class="st">"pred"</span>, label_col <span class="op">=</span> <span class="st">"label"</span>, user_col <span class="op">=</span> <span class="st">"user"</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">mean_recip_rank</span><span class="op">(</span><span class="va">x</span>, user_col <span class="op">=</span> <span class="st">"user"</span>, label_col <span class="op">=</span> <span class="st">"label"</span>, pred_col <span class="op">=</span> <span class="st">"pred"</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -70,17 +70,17 @@ rank is \(1/|U|\sum_{u\in U}r_u.\)</p>
 and <code>user_col</code></p></dd>
 
 
-<dt>pred_col</dt>
-<dd><p>column of <code>x</code> of predicted ratings</p></dd>
+<dt>user_col</dt>
+<dd><p>string identifying column of <code>x</code> of users</p></dd>
 
 
 <dt>label_col</dt>
-<dd><p>column of <code>x</code> of labels; non-zero values are assumed
+<dd><p>string identifying column of <code>x</code> of labels; non-zero values are assumed
 to indicate relevance</p></dd>
 
 
-<dt>user_col</dt>
-<dd><p>column of <code>x</code> of users</p></dd>
+<dt>pred_col</dt>
+<dd><p>string identifying column of <code>x</code> of predicted ratings</p></dd>
 
 </dl></div>
     <div class="section level2">
